@@ -120,7 +120,7 @@ class BarangKeluarController extends Controller
             'keterangan' => 'required',
         ]);
 
-        $barangKeluar = new BarangKeluar();
+        $barangKeluar = BarangKeluar::findOrFail($id);
         $barangKeluar->id_barang = $request->id_barang;
         $barangKeluar->tanggal_keluar = $request->tanggal_keluar;
         $barangKeluar->jumlah = $request->jumlah;

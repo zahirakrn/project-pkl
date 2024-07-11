@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Alert;
 use App\Models\Barang;
 use App\Models\Pengembalian;
+use App\Models\Pinjaman;
 use Illuminate\Http\Request;
 
 class PengembalianController extends Controller
@@ -16,7 +17,8 @@ class PengembalianController extends Controller
      */
     public function index()
     {
-        $pengembalian = Pengembalian::latest()->get();
+        $pengembalian = Pinjaman::where('status', 'Dikembalikan')->get();
+
         confirmDelete('Hapus!', 'Anda Yakin Ingin Menghapusnya?');
 
         return view('admin.pengembalian.index', compact('pengembalian'));
@@ -52,18 +54,18 @@ class PengembalianController extends Controller
         //     'status' => 'required',
         // ]);
 
-        $pinjaman = new Pengembalian();
-        $pinjaman->id_barang = $request->id_barang;
-        $pinjaman->tanggal_pengembalian = $request->tanggal_pengembalian;
-        $pinjaman->nama_peminjam = $request->nama_peminjam;
-        $pinjaman->jumlah = $request->jumlah;
-        $pinjaman->status = "Sudah Dikembalikan Ya";
+        $pengembalian = new Pinjamanan();
+        $pengembalian->id_barang = $request->id_barang;
+        $pengembalian->tanggal_pengembalian = $request->tanggal_pengembalian;
+        $pengembalian->nama_peminjam = $request->nama_peminjam;
+        $pengembalian->jumlah = $request->jumlah;
+        $pengembalian->status = "Sudah Dikembalikan Ya";
 
         $barang = Barang::find($request->id_barang);
         $barang->stok += $request->jumlah;
         $barang->save();
 
-        $pinjaman->save();
+        $pengembalian->save();
         Alert::success('Success', 'Data Berhasil Disimpan');
         return redirect()->route('pengembalian.index');
 

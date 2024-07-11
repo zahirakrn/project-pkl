@@ -16,7 +16,7 @@ class PinjamanController extends Controller
      */
     public function index()
     {
-        $pinjaman = Pinjaman::latest()->get();
+        $pinjaman = Pinjaman::where('status', 'Dipinjam')->get();
         confirmDelete('Hapus!', 'Anda Yakin Ingin Menghapusnya?');
 
         return view('admin.pinjaman.index', compact('pinjaman'));
@@ -58,7 +58,7 @@ class PinjamanController extends Controller
         $pinjaman->tanggal_pinjam = $request->tanggal_pinjam;
         $pinjaman->nama_peminjam = $request->nama_peminjam;
         $pinjaman->jumlah = $request->jumlah;
-        $pinjaman->status = "Masih Dipinjam ya";
+        $pinjaman->status = "Dipinjam";
 
         $barang = Barang::find($request->id_barang);
         if ($barang->stok < $request->jumlah) {
@@ -70,7 +70,7 @@ class PinjamanController extends Controller
             $pinjaman->save();
             Alert::success('Success', 'Data Berhasil Dibuat.')->autoClose(1500);
 
-            return redirect()->route('barangkeluar.index');
+            return redirect()->route('pinjaman.index');
         }
 
         $barang->stok -= $request->jumlah;
@@ -129,6 +129,13 @@ class PinjamanController extends Controller
         $pinjaman->nama_peminjam = $request->nama_peminjam;
         $pinjaman->jumlah = $request->jumlah;
         $pinjaman->status = $request->status;
+
+        $barang = Barang::find($request->id_barang);
+        if ($pinjaman->status = "Dikembalikan") {
+            $barang->stok += $request->jumlah;
+            $barang->save();
+        }
+
         $pinjaman->save();
 
         // $barang = Barang::find($request->id_barang);

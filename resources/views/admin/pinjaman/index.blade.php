@@ -9,7 +9,7 @@
     <div class="card">
         <div class="card-body">
             <h5 class="card-header">Table Pinjaman <a href="{{ route('pinjaman.create') }}" class="btn btn-sm btn-primary"
-                style="float: right">Add</a></h5>
+                style="float: right">+ Tambah Data</a></h5>
             <div class="table-responsive text-nowrap">
                 <table class="table table-bordered" id="example">
                     <thead>

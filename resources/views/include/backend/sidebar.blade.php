@@ -53,4 +53,10 @@
                    <div data-i18n="Barang Masuk">Pengembalian</div>
             </a>
         </li>
+         <li class="menu-item">
+            <a href="{{ route('laporan.index') }}"class="menu-link">
+                 <i class='menu-icon ft-icons bx bxs-file-doc'></i>
+                   <div data-i18n="laporan">Laporan</div>
+            </a>
+        </li>
 </aside>

@@ -100,7 +100,7 @@
           <div class="card-body">
             <div class="card-title d-flex align-items-start justify-content-between">
               <div class="avatar flex-shrink-0">
-                <span class="avatar-initial rounded bg-label-secondary"><i class="bx bx-time-five"></i></span>
+                <span class="avatar-initial rounded bg-label-success"><i class="bx bx-time-five"></i></span>
               </div>
               <div class="dropdown">
                 <button class="btn p-0" type="button" id="cardOpt6" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">

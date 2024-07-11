@@ -9,8 +9,9 @@
     <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Tables /</span> Pengembalian</h4>
     <div class="card">
         <div class="card-body">
-            <h5 class="card-header">Table Pengembalian <a href="{{ route('pengembalian.create') }}" class="btn btn-sm btn-primary"
-                style="float: right">Add</a></h5>
+            <h5 class="card-header">Table Pengembalian</h5>
+             {{-- <a href="{{ route('pengembalian.create') }}" class="btn btn-sm btn-primary"
+                style="float: right">+ Tambah Data</a> --}}
             <div class="table-responsive text-nowrap">
                 <table class="table table-bordered" id="example">
                     <thead>
@@ -29,7 +30,7 @@
                             <tr>
                                 <td>{{ $loop->index + 1 }}</td>
                                 <td>{{ $data->barang->nama_barang }}</td>
-                                <td>{{ $data->tanggal_pengembalian}}</td>
+                                <td>{{ $data->updated_at}}</td>
                                 <td>{{ $data->nama_peminjam}}</td>
                                 <td>{{ $data->jumlah }}</td>
                                 <td>{{ $data->status }}</td>
